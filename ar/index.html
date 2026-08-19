@@ -5,177 +5,45 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#090909">
 <title>Гастробар на Ясной - AR MENU DEMO</title>
-<meta name="description" content="Демо AR меню Гастробара на Ясной. Посмотрите блюдо прямо на столе через камеру телефона.">
 <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/4.3.1/model-viewer.min.js"></script>
 <script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js"}}</script>
 <style>
-:root{--bg:#090909;--text:#f5f0e7;--muted:#9b968d;--line:#272624;--accent:#a71820}
-*{box-sizing:border-box}html,body{margin:0;min-height:100%;background:var(--bg);color:var(--text);font-family:Arial,Helvetica,sans-serif}
-body{min-height:100svh}.app{min-height:100svh;display:grid;grid-template-rows:auto 1fr auto}
-header{height:68px;display:flex;align-items:center;justify-content:space-between;padding:0 18px;border-bottom:1px solid var(--line);gap:12px}
-.brand{display:flex;align-items:center;gap:11px;min-width:0}.logo{width:34px;height:34px;border:1px solid #cfc7ba;border-radius:50%;display:grid;place-items:center;font-size:11px;font-weight:900;letter-spacing:.08em}
-.brand b{display:block;font-size:13px;letter-spacing:.07em;text-transform:uppercase;white-space:nowrap}.brand small{display:block;color:var(--muted);font-size:10px;margin-top:2px}
-.badge{font-size:9px;letter-spacing:.16em;border:1px solid #46433f;border-radius:999px;padding:7px 9px;color:#c9c1b5;white-space:nowrap}
-main{position:relative;min-height:0;background:radial-gradient(circle at 50% 38%,rgba(87,61,45,.28),transparent 38%),linear-gradient(180deg,#171513,#090909 72%)}
-model-viewer{width:100%;height:calc(100svh - 114px);min-height:590px;background:transparent;--poster-color:transparent}
-.copy{position:absolute;z-index:5;left:18px;right:18px;top:18px;pointer-events:none}.eyebrow{font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:#bfb6aa;margin-bottom:9px}
-h1{font-size:clamp(34px,10vw,58px);line-height:.88;letter-spacing:-.06em;margin:0;max-width:8ch}.sub{margin-top:12px;color:#b9b2a8;font-size:12px;line-height:1.45;max-width:34ch}
-.live{display:inline-flex;align-items:center;gap:7px;margin-top:12px;color:#ddd5ca;font-size:9px;letter-spacing:.15em;text-transform:uppercase}.live:before{content:"";width:7px;height:7px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 0 rgba(167,24,32,.55);animation:pulse 1.7s infinite}
-@keyframes pulse{70%{box-shadow:0 0 0 9px rgba(167,24,32,0)}}.arbtn{position:absolute;left:18px;right:18px;bottom:20px;border:0;border-radius:16px;background:#f3ede4;color:#111;padding:16px 18px;font-size:14px;font-weight:900;letter-spacing:.04em;text-transform:uppercase;box-shadow:0 18px 45px rgba(0,0,0,.4);cursor:pointer}
-.arbtn small{display:block;margin-top:3px;font-size:10px;font-weight:500;letter-spacing:0;text-transform:none;color:#69655f}.load{position:absolute;z-index:7;left:18px;right:18px;bottom:20px;border-radius:16px;border:1px solid #3a3834;background:rgba(12,12,12,.92);padding:15px 16px;color:#d4cdc3;font-size:12px;transition:.25s}
-.load i{display:block;height:3px;margin-top:9px;background:#262522;border-radius:999px;overflow:hidden}.load i:after{content:"";display:block;width:38%;height:100%;background:#d6cec2;animation:bar 1.1s ease-in-out infinite alternate}@keyframes bar{to{transform:translateX(160%)}}
-.ready .load{opacity:0;pointer-events:none}.hint{position:absolute;left:50%;bottom:92px;transform:translateX(-50%);z-index:8;padding:9px 12px;border:1px solid rgba(255,255,255,.08);border-radius:999px;background:rgba(10,10,10,.76);backdrop-filter:blur(10px);font-size:10px;color:#ddd6cd;white-space:nowrap;opacity:0;transition:.25s}
-model-viewer[ar-status="session-started"]~.hint{opacity:1}
-footer{height:46px;border-top:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;padding:0 18px;color:#77736d;font-size:9px;letter-spacing:.04em}
-@media(min-width:900px){model-viewer{height:calc(100svh - 114px)}.copy{left:34px;top:30px}h1{font-size:64px}.arbtn{width:390px;left:50%;right:auto;transform:translateX(-50%)}}
+:root{--bg:#090909;--text:#f5f0e7;--muted:#aaa39a;--line:#282725;--accent:#a71820}*{box-sizing:border-box}html,body{margin:0;background:#090909;color:var(--text);font-family:Arial,sans-serif}body{min-height:100svh}.app{min-height:100svh;display:grid;grid-template-rows:64px 1fr 42px}header,footer{display:flex;align-items:center;justify-content:space-between;padding:0 16px;border-color:var(--line);border-style:solid;border-width:0 0 1px}footer{border-width:1px 0 0;color:#78736d;font-size:9px}.brand b{display:block;font-size:12px;letter-spacing:.08em}.brand small{font-size:9px;color:var(--muted)}.badge{font-size:9px;border:1px solid #44403c;border-radius:999px;padding:7px 9px;color:#cfc6ba}main{position:relative;min-height:0;background:radial-gradient(circle at 50% 35%,rgba(85,58,42,.22),transparent 36%),linear-gradient(#171513,#090909 72%)}model-viewer{width:100%;height:calc(100svh - 106px);min-height:560px;--poster-color:transparent}.copy{position:absolute;z-index:5;left:18px;right:18px;top:18px;pointer-events:none}.eyebrow{font-size:9px;letter-spacing:.18em;text-transform:uppercase;color:#c0b8ad}.copy h1{font-size:clamp(34px,10vw,56px);line-height:.9;letter-spacing:-.055em;margin:8px 0 0;max-width:8ch}.sub{margin-top:10px;max-width:36ch;font-size:12px;line-height:1.45;color:#b9b2a8}.live{margin-top:10px;display:inline-flex;gap:7px;align-items:center;font-size:9px;letter-spacing:.13em;text-transform:uppercase;color:#d8d0c5}.live:before{content:"";width:7px;height:7px;border-radius:50%;background:var(--accent)}.arbtn{position:absolute;left:18px;right:18px;bottom:18px;border:0;border-radius:16px;background:#f3ede4;color:#111;padding:16px;font-size:14px;font-weight:900;text-transform:uppercase;box-shadow:0 18px 45px #0008}.arbtn small{display:block;margin-top:3px;font-size:10px;font-weight:500;text-transform:none;color:#66615b}.load{position:absolute;z-index:7;left:18px;right:18px;bottom:18px;border:1px solid #3a3834;border-radius:16px;background:#0c0c0ceb;padding:15px;color:#d4cdc3;font-size:12px;transition:.25s}.ready .load{opacity:0;pointer-events:none}@media(min-width:900px){.copy{left:34px;top:30px}.arbtn{width:390px;left:50%;right:auto;transform:translateX(-50%)}}
 </style>
 </head>
 <body>
 <div class="app" id="app">
-<header>
-  <div class="brand"><div class="logo">ЯСН</div><div><b>Гастробар на Ясной</b><small>цифровое меню</small></div></div>
-  <div class="badge">AR DEMO 01</div>
-</header>
+<header><div class="brand"><b>ГАСТРОБАР НА ЯСНОЙ</b><small>AR MENU · PHOTO RELIEF</small></div><div class="badge">DEMO 02</div></header>
 <main>
-  <div class="copy">
-    <div class="eyebrow">Блюдо перед заказом</div>
-    <h1>Поставь его на стол.</h1>
-    <div class="sub">Покрути живую 3D модель. Затем включи камеру и примерь подачу прямо к своему столу.</div>
-    <div class="live">3D модель создаётся из фото</div>
-  </div>
-
-  <model-viewer id="dish"
-    alt="3D модель блюда Гастробара на Ясной"
-    camera-controls
-    touch-action="pan-y"
-    auto-rotate
-    auto-rotate-delay="500"
-    rotation-per-second="14deg"
-    autoplay
-    environment-image="neutral"
-    exposure="1.06"
-    shadow-intensity="1.3"
-    shadow-softness=".9"
-    interaction-prompt="auto"
-    ar
-    ar-placement="floor"
-    ar-scale="auto"
-    ar-modes="webxr scene-viewer quick-look"
-    xr-environment>
-      <button class="arbtn" slot="ar-button">Поставить на стол<small>камера найдёт поверхность и разместит блюдо</small></button>
-  </model-viewer>
-  <div class="hint">Медленно поводите телефоном над столом</div>
-  <div class="load"><b>Собираем цифровое блюдо...</b><i></i></div>
+<div class="copy"><div class="eyebrow">Реальное фото блюда</div><h1>Поставь его на стол.</h1><div class="sub">Теперь внутри модели не нарисованные креветки, а реальная фотография подачи с рельефом и физическим размером.</div><div class="live">PHOTO → RELIEF → AR</div></div>
+<model-viewer id="dish" camera-controls auto-rotate auto-rotate-delay="700" rotation-per-second="9deg" environment-image="neutral" exposure="1.0" shadow-intensity="1.5" shadow-softness=".95" ar ar-placement="floor" ar-scale="auto" ar-modes="webxr scene-viewer quick-look" camera-orbit="35deg 62deg 0.62m" min-camera-orbit="auto 35deg 0.35m" max-camera-orbit="auto 82deg 1.1m" touch-action="pan-y">
+<button class="arbtn" slot="ar-button">Поставить на стол<small>наведи камеру на поверхность и размести блюдо</small></button>
+</model-viewer>
+<div class="load"><b>Собираем блюдо из настоящего фото…</b><br>Фоторельеф + чёрная сковорода + деревянная доска.</div>
 </main>
-<footer><span>YASNAYA × KAVA</span><span>DEMO · 1 блюдо</span></footer>
+<footer><span>YASNAYA × KAVA</span><span>REAL PHOTO DEMO</span></footer>
 </div>
-
 <script type="module">
 import * as THREE from 'three';
 import { GLTFExporter } from 'https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/exporters/GLTFExporter.js';
-
-const app=document.getElementById('app');
-const viewer=document.getElementById('dish');
-
-const root=new THREE.Group();
-root.name='YasnayaDish';
-
-const ceramic=new THREE.MeshStandardMaterial({color:0xb8b0a5,roughness:.82,metalness:0});
-const ceramic2=new THREE.MeshStandardMaterial({color:0x8e877e,roughness:.78,metalness:0});
-const paper=new THREE.MeshStandardMaterial({color:0x9a6e43,roughness:.95,metalness:0,side:THREE.DoubleSide});
-const fried=new THREE.MeshStandardMaterial({color:0xd78328,roughness:.72,metalness:0});
-const fried2=new THREE.MeshStandardMaterial({color:0xb85d18,roughness:.78,metalness:0});
-const sauceMat=new THREE.MeshStandardMaterial({color:0xf0c72d,roughness:.38,metalness:0});
-const steamMat=new THREE.MeshStandardMaterial({color:0xffffff,transparent:true,opacity:.18,roughness:1,metalness:0,side:THREE.DoubleSide});
-
-const plate=new THREE.Mesh(new THREE.CylinderGeometry(.155,.16,.012,72),ceramic);
-plate.position.y=.006; root.add(plate);
-const plateInner=new THREE.Mesh(new THREE.CylinderGeometry(.137,.145,.006,72),ceramic2);
-plateInner.position.y=.014; root.add(plateInner);
-
-const sheet=new THREE.Mesh(new THREE.BoxGeometry(.265,.004,.17),paper);
-sheet.position.set(-.006,.019,.004); sheet.rotation.y=-.08; root.add(sheet);
-
-const bowl=new THREE.Mesh(new THREE.CylinderGeometry(.047,.041,.043,64),ceramic);
-bowl.position.set(.072,.043,-.035); root.add(bowl);
-const sauce=new THREE.Mesh(new THREE.CylinderGeometry(.038,.038,.004,64),sauceMat);
-sauce.position.set(.072,.066,-.035); root.add(sauce);
-
-function nugget(x,z,sx,sz,rot,shade=false){
-  const g=new THREE.SphereGeometry(1,28,18);
-  const m=new THREE.Mesh(g,shade?fried2:fried);
-  m.scale.set(sx,.013,sz);
-  m.position.set(x,.042,z);
-  m.rotation.y=rot;
-  m.rotation.z=(Math.random()-.5)*.08;
-  root.add(m);
-  return m;
-}
-nugget(-.070,-.028,.047,.020,.20);
-nugget(-.030,-.050,.043,.019,-.28,true);
-nugget(.012,-.025,.049,.022,.52);
-nugget(-.064,.014,.045,.019,-.48,true);
-nugget(-.020,.006,.046,.020,.04);
-nugget(.025,.022,.044,.020,-.40,true);
-nugget(-.035,.050,.045,.019,.34);
-nugget(.025,.056,.041,.018,-.16);
-nugget(.062,.027,.038,.017,.48);
-
-const crumbs=[];
-for(let i=0;i<18;i++){
-  const c=new THREE.Mesh(new THREE.SphereGeometry(.0025+Math.random()*.0015,8,6),fried2);
-  c.position.set(-.10+Math.random()*.17,.026,-.075+Math.random()*.13);
-  root.add(c); crumbs.push(c);
-}
-
-const steam=[];
-for(let i=0;i<3;i++){
-  const s=new THREE.Mesh(new THREE.CylinderGeometry(.003,.006,.055,12,1,true),steamMat.clone());
-  s.name='steam'+i;
-  s.position.set(.055+i*.015,.105,-.04+i*.006);
-  s.rotation.z=(i-1)*.18;
-  root.add(s); steam.push(s);
-}
-
-root.rotation.x=0;
-root.scale.setScalar(1);
-
-const animations=[];
-for(let i=0;i<steam.length;i++){
-  const s=steam[i], t=[0,1.6,3.2];
-  const p=s.position;
-  const pos=new THREE.VectorKeyframeTrack(`${s.name}.position`,t,[
-    p.x,p.y,p.z,
-    p.x+(i-1)*.006,p.y+.035,p.z+.004,
-    p.x,p.y,p.z
-  ]);
-  const sc=new THREE.VectorKeyframeTrack(`${s.name}.scale`,t,[
-    .8,.8,.8, 1.15,1.45,1.15, .8,.8,.8
-  ]);
-  animations.push(new THREE.AnimationClip('steamLoop'+i,3.2,[pos,sc]));
-}
-
-const exporter=new GLTFExporter();
-exporter.parse(
-  root,
-  result=>{
-    const blob=new Blob([result],{type:'model/gltf-binary'});
-    const url=URL.createObjectURL(blob);
-    viewer.src=url;
-    viewer.addEventListener('load',()=>app.classList.add('ready'),{once:true});
-  },
-  err=>{
-    console.error(err);
-    document.querySelector('.load').innerHTML='<b>Не удалось собрать 3D модель.</b><br>Обнови страницу ещё раз.';
-  },
-  {binary:true,animations,onlyVisible:true,trs:false}
-);
-
-viewer.addEventListener('ar-status',e=>{
-  if(e.detail.status==='failed'){
-    alert('AR не поддерживается этим устройством или браузером. 3D модель можно продолжить смотреть прямо на странице.');
-  }
-});
+const app=document.getElementById('app'),viewer=document.getElementById('dish');
+const IMG='data:image/jpeg;base64,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';
+const root=new THREE.Group();root.name='YasnayaRealPhotoDish';
+const wood=new THREE.MeshStandardMaterial({color:0x9a6032,roughness:.78});
+const black=new THREE.MeshStandardMaterial({color:0x080808,roughness:.5,metalness:.08});
+const board=new THREE.Mesh(new THREE.CylinderGeometry(.18,.18,.018,8),wood);board.scale.z=.94;board.rotation.y=Math.PI/8;board.position.y=.009;root.add(board);
+const pan=new THREE.Mesh(new THREE.CylinderGeometry(.147,.147,.018,72),black);pan.position.y=.027;root.add(pan);
+const rim=new THREE.Mesh(new THREE.TorusGeometry(.144,.0075,12,96),black);rim.rotation.x=Math.PI/2;rim.position.y=.047;root.add(rim);
+const image=new Image();image.src=IMG;await image.decode();
+const cv=document.createElement('canvas');cv.width=cv.height=256;const cx=cv.getContext('2d');cx.drawImage(image,0,0,256,256);const px=cx.getImageData(0,0,256,256).data;
+const rings=24,segs=128,R=.136;const pos=[],uv=[],idx=[];pos.push(0,.047,0);uv.push(.5,.5);
+const sample=(u,v)=>{const x=Math.max(0,Math.min(255,Math.round(u*255))),y=Math.max(0,Math.min(255,Math.round((1-v)*255))),i=(y*256+x)*4;return(.2126*px[i]+.7152*px[i+1]+.0722*px[i+2])/255};
+for(let j=1;j<=rings;j++){const rr=R*j/rings,t=rr/R;for(let i=0;i<segs;i++){const a=2*Math.PI*i/segs,x=rr*Math.cos(a),z=rr*Math.sin(a),u=.5+x/(2*R),v=.5+z/(2*R),L=sample(u,v);let h=.044+Math.max(0,L-.16)*.013;h+=.0025*Math.pow(1-t,2);pos.push(x,h,z);uv.push(u,v)}}
+for(let i=0;i<segs;i++)idx.push(0,1+i,1+((i+1)%segs));
+for(let j=1;j<rings;j++){const a0=1+(j-1)*segs,b0=1+j*segs;for(let i=0;i<segs;i++){const n=(i+1)%segs,a=a0+i,b=a0+n,c=b0+i,d=b0+n;idx.push(a,c,d,a,d,b)}}
+const g=new THREE.BufferGeometry();g.setAttribute('position',new THREE.Float32BufferAttribute(pos,3));g.setAttribute('uv',new THREE.Float32BufferAttribute(uv,2));g.setIndex(idx);g.computeVertexNormals();
+const tex=new THREE.CanvasTexture(cv);tex.colorSpace=THREE.SRGBColorSpace;tex.flipY=false;const food=new THREE.Mesh(g,new THREE.MeshStandardMaterial({map:tex,roughness:.72,metalness:0,side:THREE.DoubleSide}));root.add(food);
+const exporter=new GLTFExporter();exporter.parse(root,res=>{const url=URL.createObjectURL(new Blob([res],{type:'model/gltf-binary'}));viewer.src=url;viewer.addEventListener('load',()=>app.classList.add('ready'),{once:true})},err=>{console.error(err);document.querySelector('.load').innerHTML='<b>Ошибка сборки модели.</b>'},{binary:true,onlyVisible:true});
+viewer.addEventListener('ar-status',e=>{if(e.detail.status==='failed')alert('AR не поддерживается этим браузером. 3D-превью останется доступным на странице.')});
 </script>
-</body>
-</html>
+</body></html>
