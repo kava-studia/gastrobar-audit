@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#090909">
-<title>Гастробар на Ясной - AR MENU DEMO 08</title>
+<title>Гастробар на Ясной - AR MENU DEMO 09</title>
 <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/4.3.1/model-viewer.min.js"></script>
 <style>
 :root{--bg:#090909;--text:#f5f0e7;--muted:#aaa39a;--line:#282725;--accent:#a71820}
@@ -19,25 +19,25 @@ model-viewer{position:absolute;inset:0;width:100%;height:100%;--poster-color:tra
 </head>
 <body>
 <div class="app" id="app">
-<header><div class="brand"><b>ГАСТРОБАР НА ЯСНОЙ</b><small>AR MENU · LAYERED PHOTO V8</small></div><div class="badge">DEMO 08</div></header>
+<header><div class="brand"><b>ГАСТРОБАР НА ЯСНОЙ</b><small>AR MENU · SEPARATED PHOTO V9</small></div><div class="badge">DEMO 09</div></header>
 <main>
-<div class="copy"><div class="eyebrow">Креветки гриль</div><h1>Посмотри на столе.</h1><div class="sub">Реальный размер · отдельные слои · мягкий объём</div><div class="live">BOARD → PAN → FOOD → AR</div></div>
+<div class="copy"><div class="eyebrow">Креветки гриль</div><h1>Посмотри на столе.</h1><div class="sub">Реальный размер · отдельные креветки · мягкий объём</div><div class="live">BOARD → PAN → SHRIMPS → AR</div></div>
 <model-viewer id="dish"
- src="/api/model?v=8"
- poster="https://drive.google.com/thumbnail?id=1QPaUN4806SSIjrl5iFDQfgscI_yzOh4k&sz=w1600&v=8"
+ src="/api/model?v=9"
+ poster="https://drive.google.com/thumbnail?id=1QPaUN4806SSIjrl5iFDQfgscI_yzOh4k&sz=w1600&v=9"
  loading="eager"
  reveal="auto"
  camera-controls
  environment-image="neutral"
- exposure="1.02"
- shadow-intensity="0.76"
+ exposure="0.96"
+ shadow-intensity="0.42"
  shadow-softness="1"
  tone-mapping="neutral"
  ar
  ar-placement="floor"
  ar-scale="fixed"
  ar-modes="quick-look webxr scene-viewer"
- camera-target="0m 0.012m -0.01m"
+ camera-target="0m 0.010m -0.01m"
  camera-orbit="0deg 60deg 0.56m"
  min-camera-orbit="-28deg 42deg 0.40m"
  max-camera-orbit="28deg 78deg 0.92m"
@@ -49,15 +49,15 @@ model-viewer{position:absolute;inset:0;width:100%;height:100%;--poster-color:tra
 <button class="arbtn" slot="ar-button">Поставить на стол<small>наведи камеру на поверхность и размести блюдо</small></button>
 </model-viewer>
 <div class="tip">потяни блюдо пальцем · затем открой AR</div>
-<div class="load"><span class="wait"><b>Загружаем финальную фотомодель V8…</b><br>Отдельная доска, сковорода, еда, лимон и укроп.</span><span class="err"><b>Модель не загрузилась.</b><br>Обнови страницу один раз.</span></div>
+<div class="load"><span class="wait"><b>Загружаем V9…</b><br>Тонкая доска, низкая сковорода и отдельные объёмные креветки.</span><span class="err"><b>Модель не загрузилась.</b><br>Обнови страницу один раз.</span></div>
 </main>
-<footer><span>YASNAYA × KAVA</span><span>LAYERED PHOTO V8</span></footer>
+<footer><span>YASNAYA × KAVA</span><span>SEPARATED PHOTO V9</span></footer>
 </div>
 <script>
 const app=document.getElementById('app');const viewer=document.getElementById('dish');
 viewer.addEventListener('load',()=>{app.classList.remove('failed');app.classList.add('ready')},{once:true});
 viewer.addEventListener('error',e=>{console.error(e);app.classList.add('failed')},{once:true});
-setTimeout(()=>{if(!app.classList.contains('ready'))app.classList.add('failed')},20000);
+setTimeout(()=>{if(!app.classList.contains('ready'))app.classList.add('failed')},30000);
 </script>
 </body>
 </html>
