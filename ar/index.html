@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#090909">
-<title>Гастробар на Ясной - AR MENU DEMO 09</title>
+<title>Гастробар на Ясной - AR MENU DEMO 10</title>
 <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/4.3.1/model-viewer.min.js"></script>
 <style>
 :root{--bg:#090909;--text:#f5f0e7;--muted:#aaa39a;--line:#282725;--accent:#a71820}
@@ -19,18 +19,18 @@ model-viewer{position:absolute;inset:0;width:100%;height:100%;--poster-color:tra
 </head>
 <body>
 <div class="app" id="app">
-<header><div class="brand"><b>ГАСТРОБАР НА ЯСНОЙ</b><small>AR MENU · SEPARATED PHOTO V9</small></div><div class="badge">DEMO 09</div></header>
+<header><div class="brand"><b>ГАСТРОБАР НА ЯСНОЙ</b><small>AR MENU · SEPARATED PHOTO V10</small></div><div class="badge">DEMO 10</div></header>
 <main>
-<div class="copy"><div class="eyebrow">Креветки гриль</div><h1>Посмотри на столе.</h1><div class="sub">Реальный размер · отдельные креветки · мягкий объём</div><div class="live">BOARD → PAN → SHRIMPS → AR</div></div>
+<div class="copy"><div class="eyebrow">Креветки гриль</div><h1>Посмотри на столе.</h1><div class="sub">Реальный размер · отдельные креветки · правильный свет</div><div class="live">BOARD → PAN → SHRIMPS → AR</div></div>
 <model-viewer id="dish"
- src="/api/model?v=9"
- poster="https://drive.google.com/thumbnail?id=1QPaUN4806SSIjrl5iFDQfgscI_yzOh4k&sz=w1600&v=9"
+ src="/api/model?v=10"
+ poster="https://drive.google.com/thumbnail?id=1QPaUN4806SSIjrl5iFDQfgscI_yzOh4k&sz=w1600&v=10"
  loading="eager"
  reveal="auto"
  camera-controls
  environment-image="neutral"
- exposure="0.96"
- shadow-intensity="0.42"
+ exposure="1.08"
+ shadow-intensity="0.26"
  shadow-softness="1"
  tone-mapping="neutral"
  ar
@@ -49,9 +49,9 @@ model-viewer{position:absolute;inset:0;width:100%;height:100%;--poster-color:tra
 <button class="arbtn" slot="ar-button">Поставить на стол<small>наведи камеру на поверхность и размести блюдо</small></button>
 </model-viewer>
 <div class="tip">потяни блюдо пальцем · затем открой AR</div>
-<div class="load"><span class="wait"><b>Загружаем V9…</b><br>Тонкая доска, низкая сковорода и отдельные объёмные креветки.</span><span class="err"><b>Модель не загрузилась.</b><br>Обнови страницу один раз.</span></div>
+<div class="load"><span class="wait"><b>Загружаем V10…</b><br>Исправлены нормали, освещение и читаемость фототекстуры.</span><span class="err"><b>Модель не загрузилась.</b><br>Обнови страницу один раз.</span></div>
 </main>
-<footer><span>YASNAYA × KAVA</span><span>SEPARATED PHOTO V9</span></footer>
+<footer><span>YASNAYA × KAVA</span><span>SEPARATED PHOTO V10</span></footer>
 </div>
 <script>
 const app=document.getElementById('app');const viewer=document.getElementById('dish');
