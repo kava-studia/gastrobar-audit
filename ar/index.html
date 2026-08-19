@@ -7,6 +7,7 @@
 <title>Гастробар на Ясной - AR MENU DEMO</title>
 <meta name="description" content="Демо AR меню Гастробара на Ясной. Посмотрите блюдо прямо на столе через камеру телефона.">
 <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/4.3.1/model-viewer.min.js"></script>
+<script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js"}}</script>
 <style>
 :root{--bg:#090909;--text:#f5f0e7;--muted:#9b968d;--line:#272624;--accent:#a71820}
 *{box-sizing:border-box}html,body{margin:0;min-height:100%;background:var(--bg);color:var(--text);font-family:Arial,Helvetica,sans-serif}
@@ -70,7 +71,7 @@ footer{height:46px;border-top:1px solid var(--line);display:flex;align-items:cen
 </div>
 
 <script type="module">
-import * as THREE from 'https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js';
+import * as THREE from 'three';
 import { GLTFExporter } from 'https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/exporters/GLTFExporter.js';
 
 const app=document.getElementById('app');
@@ -120,10 +121,11 @@ nugget(-.035,.050,.045,.019,.34);
 nugget(.025,.056,.041,.018,-.16);
 nugget(.062,.027,.038,.017,.48);
 
+const crumbs=[];
 for(let i=0;i<18;i++){
   const c=new THREE.Mesh(new THREE.SphereGeometry(.0025+Math.random()*.0015,8,6),fried2);
   c.position.set(-.10+Math.random()*.17,.026,-.075+Math.random()*.13);
-  root.add(c);
+  root.add(c); crumbs.push(c);
 }
 
 const steam=[];
@@ -135,24 +137,39 @@ for(let i=0;i<3;i++){
   root.add(s); steam.push(s);
 }
 
+root.rotation.x=0;
+root.scale.setScalar(1);
+
 const animations=[];
 for(let i=0;i<steam.length;i++){
-  const s=steam[i],t=[0,1.6,3.2],p=s.position;
-  const pos=new THREE.VectorKeyframeTrack(`${s.name}.position`,t,[p.x,p.y,p.z,p.x+(i-1)*.006,p.y+.035,p.z+.004,p.x,p.y,p.z]);
-  const sc=new THREE.VectorKeyframeTrack(`${s.name}.scale`,t,[.8,.8,.8,1.15,1.45,1.15,.8,.8,.8]);
+  const s=steam[i], t=[0,1.6,3.2];
+  const p=s.position;
+  const pos=new THREE.VectorKeyframeTrack(`${s.name}.position`,t,[
+    p.x,p.y,p.z,
+    p.x+(i-1)*.006,p.y+.035,p.z+.004,
+    p.x,p.y,p.z
+  ]);
+  const sc=new THREE.VectorKeyframeTrack(`${s.name}.scale`,t,[
+    .8,.8,.8, 1.15,1.45,1.15, .8,.8,.8
+  ]);
   animations.push(new THREE.AnimationClip('steamLoop'+i,3.2,[pos,sc]));
 }
 
 const exporter=new GLTFExporter();
-exporter.parse(root,result=>{
-  const blob=new Blob([result],{type:'model/gltf-binary'});
-  const url=URL.createObjectURL(blob);
-  viewer.src=url;
-  viewer.addEventListener('load',()=>app.classList.add('ready'),{once:true});
-},err=>{
-  console.error(err);
-  document.querySelector('.load').innerHTML='<b>Не удалось собрать 3D модель.</b><br>Обнови страницу ещё раз.';
-},{binary:true,animations,onlyVisible:true,trs:false});
+exporter.parse(
+  root,
+  result=>{
+    const blob=new Blob([result],{type:'model/gltf-binary'});
+    const url=URL.createObjectURL(blob);
+    viewer.src=url;
+    viewer.addEventListener('load',()=>app.classList.add('ready'),{once:true});
+  },
+  err=>{
+    console.error(err);
+    document.querySelector('.load').innerHTML='<b>Не удалось собрать 3D модель.</b><br>Обнови страницу ещё раз.';
+  },
+  {binary:true,animations,onlyVisible:true,trs:false}
+);
 
 viewer.addEventListener('ar-status',e=>{
   if(e.detail.status==='failed'){
