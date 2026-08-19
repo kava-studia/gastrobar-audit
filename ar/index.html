@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#090909">
-<title>Гастробар на Ясной - AR MENU DEMO 04</title>
+<title>Гастробар на Ясной - AR MENU DEMO 05</title>
 <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/4.3.1/model-viewer.min.js"></script>
 <style>
 :root{--bg:#090909;--text:#f5f0e7;--muted:#aaa39a;--line:#282725;--accent:#a71820}
@@ -19,28 +19,28 @@ model-viewer{position:absolute;inset:0;width:100%;height:100%;--poster-color:tra
 </head>
 <body>
 <div class="app" id="app">
-<header><div class="brand"><b>ГАСТРОБАР НА ЯСНОЙ</b><small>AR MENU · PHOTO RELIEF V4</small></div><div class="badge">DEMO 04</div></header>
+<header><div class="brand"><b>ГАСТРОБАР НА ЯСНОЙ</b><small>AR MENU · PHOTO RELIEF V5</small></div><div class="badge">DEMO 05</div></header>
 <main>
 <div class="copy"><div class="eyebrow">Креветки гриль</div><h1>Посмотри на столе.</h1><div class="sub">Реальный размер · фототекстура · рельеф</div><div class="live">PHOTO → RELIEF → AR</div></div>
 <model-viewer id="dish"
- src="/api/model?v=4"
- poster="https://drive.google.com/thumbnail?id=1QPaUN4806SSIjrl5iFDQfgscI_yzOh4k&sz=w1600&v=4"
+ src="/api/model?v=5"
+ poster="https://drive.google.com/thumbnail?id=1QPaUN4806SSIjrl5iFDQfgscI_yzOh4k&sz=w1600&v=5"
  loading="eager"
  reveal="auto"
  camera-controls
  environment-image="neutral"
- exposure="1.15"
- shadow-intensity="1.35"
- shadow-softness=".9"
+ exposure="1.08"
+ shadow-intensity="1.25"
+ shadow-softness=".92"
  tone-mapping="neutral"
  ar
  ar-placement="floor"
  ar-scale="fixed"
  ar-modes="quick-look webxr scene-viewer"
- camera-target="0m 0.027m 0m"
- camera-orbit="0deg 58deg 0.54m"
- min-camera-orbit="-28deg 42deg 0.38m"
- max-camera-orbit="28deg 78deg 0.88m"
+ camera-target="0m 0.029m 0m"
+ camera-orbit="0deg 58deg 0.58m"
+ min-camera-orbit="-28deg 42deg 0.40m"
+ max-camera-orbit="28deg 78deg 0.92m"
  field-of-view="32deg"
  min-field-of-view="26deg"
  max-field-of-view="42deg"
@@ -49,13 +49,13 @@ model-viewer{position:absolute;inset:0;width:100%;height:100%;--poster-color:tra
 <button class="arbtn" slot="ar-button">Поставить на стол<small>наведи камеру на поверхность и размести блюдо</small></button>
 </model-viewer>
 <div class="tip">потяни блюдо пальцем · затем открой AR</div>
-<div class="load"><span class="wait"><b>Загружаем фотомодель V4…</b><br>Новая версия тяжелее, зато текстура и геометрия заметно детальнее.</span><span class="err"><b>Модель не загрузилась.</b><br>Обнови страницу один раз.</span></div>
+<div class="load"><span class="wait"><b>Загружаем фотомодель V5…</b><br>Фототекстура, объём блюда и реальный масштаб.</span><span class="err"><b>Модель не загрузилась.</b><br>Обнови страницу один раз.</span></div>
 </main>
-<footer><span>YASNAYA × KAVA</span><span>PHOTO RELIEF V4</span></footer>
+<footer><span>YASNAYA × KAVA</span><span>PHOTO RELIEF V5</span></footer>
 </div>
 <script>
 const app=document.getElementById('app');const viewer=document.getElementById('dish');
-viewer.addEventListener('load',()=>app.classList.add('ready'),{once:true});
+viewer.addEventListener('load',()=>{app.classList.remove('failed');app.classList.add('ready')},{once:true});
 viewer.addEventListener('error',e=>{console.error(e);app.classList.add('failed')},{once:true});
 setTimeout(()=>{if(!app.classList.contains('ready'))app.classList.add('failed')},20000);
 </script>
